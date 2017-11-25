@@ -27,7 +27,6 @@ public class CloudMusicUtils {
     private static Logger logger = Logger.getLogger(CloudMusicUtils.class);
 
 
-
     public  void Get_Url() {
 
         try {
