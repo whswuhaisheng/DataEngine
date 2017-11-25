@@ -1,15 +1,15 @@
-package com.niujiacun.utils.utils;
+package com.niujiacun.music.common.utils;
 
-import java.io.UnsupportedEncodingException;
-import java.math.BigInteger;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import org.apache.commons.codec.binary.Base64;
+
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
-
-import org.apache.commons.codec.binary.Base64;
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Administrator on 2017/11/25.

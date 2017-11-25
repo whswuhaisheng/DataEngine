@@ -1,4 +1,4 @@
-package com.niujiacun.utils.entity;
+package com.niujiacun.music.model;
 
 /**
  * Created by Administrator on 2017/11/25.

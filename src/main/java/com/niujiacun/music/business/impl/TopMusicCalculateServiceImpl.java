@@ -1,21 +1,26 @@
-package com.niujiacun.utils.service;
+package com.niujiacun.music.business.impl;
 
-import com.niujiacun.utils.entity.MusicCommentMessage;
-import com.niujiacun.utils.utils.Constants;
+import com.niujiacun.music.business.interfaces.ITopMusicCalculateService;
+import com.niujiacun.music.common.utils.Constants;
+import com.niujiacun.music.model.MusicCommentMessage;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * Created by Administrator on 2017/11/25.
  */
-public class TopMusicCalculateService {
+@Service("topMusicCalculateService")
+public class TopMusicCalculateServiceImpl implements ITopMusicCalculateService {
 
-    private static List<MusicCommentMessage> ms = new ArrayList<MusicCommentMessage>();
-    private static List<MusicCommentMessage> msl = new ArrayList<MusicCommentMessage>();
+    static List<MusicCommentMessage> ms = new ArrayList<MusicCommentMessage>();
+    static List<MusicCommentMessage> msl = new ArrayList<MusicCommentMessage>();
 
     //获取歌曲
-    public static List<MusicCommentMessage> getTopMusic(MusicCommentMessage mcm) {
+    @Override
+    public  List<MusicCommentMessage> getTopMusic(MusicCommentMessage mcm) {
 
         int topSize = ms.size();
 
@@ -48,7 +53,8 @@ public class TopMusicCalculateService {
         return ms;
     }
     //获取评论数大于该值的歌曲
-    public static List<MusicCommentMessage> getMusicCommentsCountMore(MusicCommentMessage mcm) {
+    @Override
+    public  List<MusicCommentMessage> getMusicCommentsCountMore(MusicCommentMessage mcm) {
 
         int size = msl.size();
 

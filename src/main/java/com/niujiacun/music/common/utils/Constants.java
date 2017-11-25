@@ -1,4 +1,4 @@
-package com.niujiacun.utils.utils;
+package com.niujiacun.music.common.utils;
 
 /**
  * Created by Administrator on 2017/11/25.

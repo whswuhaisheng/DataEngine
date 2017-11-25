@@ -1,4 +1,4 @@
-package com.niujiacun.utils.entity;
+package com.niujiacun.music.model;
 
 import java.util.ArrayList;
 import java.util.List;

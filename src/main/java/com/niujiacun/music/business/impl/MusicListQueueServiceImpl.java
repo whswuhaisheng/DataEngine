@@ -1,4 +1,7 @@
-package com.niujiacun.utils.service;
+package com.niujiacun.music.business.impl;
+
+import com.niujiacun.music.business.interfaces.IMusicListQueueService;
+import org.springframework.stereotype.Service;
 
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -6,35 +9,38 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 /**
  * Created by Administrator on 2017/11/25.
  */
-public class MusicListQueueService {
+@Service("musicListQueueService")
+public class MusicListQueueServiceImpl implements IMusicListQueueService {
 
     private static Queue<String> uncrawledMusicList = new ConcurrentLinkedQueue<String>();
 
-    public static Queue<String> getUncrawledMusicList() {
+    @Override
+    public Queue<String> getUncrawledMusicList() {
         return uncrawledMusicList;
     }
 
-    public static void addMusicList(String e) {
+    @Override
+    public void addMusicList(String e) {
         uncrawledMusicList.offer(e);
     }
 
-    public static String getTopMusicList() {
+    @Override
+    public String getTopMusicList() {
         if (!uncrawledMusicList.isEmpty()) {
             return uncrawledMusicList.poll();
         }
-
         return null;
     }
 
-    public static boolean isUncrawledMusicListEmpty() {
+    @Override
+    public boolean isUncrawledMusicListEmpty() {
         return uncrawledMusicList.isEmpty();
     }
 
-    public static void printAll() {
+    @Override
+    public void printAll() {
         while (!uncrawledMusicList.isEmpty()) {
             System.out.println(uncrawledMusicList.poll());
         }
     }
-
-
 }

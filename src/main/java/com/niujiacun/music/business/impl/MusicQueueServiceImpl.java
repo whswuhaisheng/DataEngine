@@ -1,4 +1,7 @@
-package com.niujiacun.utils.service;
+package com.niujiacun.music.business.impl;
+
+import com.niujiacun.music.business.interfaces.IMusicQueueService;
+import org.springframework.stereotype.Service;
 
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -6,16 +9,19 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 /**
  * Created by Administrator on 2017/11/25.
  */
-public class MusicQueueService {
+@Service("musicQueueService")
+public class MusicQueueServiceImpl implements IMusicQueueService {
 
     private static Queue<String> uncrawledMusics = new ConcurrentLinkedQueue<String>();
     private static Queue<String> crawledMusics = new ConcurrentLinkedQueue<String>();
 
-    public static void addUncrawledMusic(String e) {
+    @Override
+    public void addUncrawledMusic(String e) {
         uncrawledMusics.offer(e);
     }
 
-    public static String getTopMusicUrl() {
+    @Override
+    public  String getTopMusicUrl() {
         if (!uncrawledMusics.isEmpty()) {
             return uncrawledMusics.poll();
         }
@@ -23,25 +29,30 @@ public class MusicQueueService {
         return null;
     }
 
-    public static void addCrawledMusic(String e) {
+    @Override
+    public void addCrawledMusic(String e) {
         crawledMusics.offer(e);
     }
 
-    public static boolean isMusicCrawled(String id) {
+    @Override
+    public boolean isMusicCrawled(String id) {
         return crawledMusics.contains(id);
     }
 
-    public static boolean isUncrawledMusicQueueEmpty() {
+    @Override
+    public boolean isUncrawledMusicQueueEmpty() {
         return uncrawledMusics.isEmpty();
     }
 
-    public static void printAll() {
+    @Override
+    public void printAll() {
         while (!uncrawledMusics.isEmpty()) {
             System.out.println(uncrawledMusics.poll());
         }
     }
 
-    public static int getCrawledMusicSize() {
+    @Override
+    public int getCrawledMusicSize() {
         return crawledMusics.size();
     }
 

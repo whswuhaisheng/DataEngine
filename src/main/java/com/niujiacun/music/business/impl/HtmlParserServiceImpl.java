@@ -1,17 +1,22 @@
-package com.niujiacun.utils.service;
+package com.niujiacun.music.business.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONPath;
 import com.google.common.collect.ImmutableMap;
-import com.niujiacun.utils.entity.MusicComment;
-import com.niujiacun.utils.entity.MusicCommentMessage;
-import com.niujiacun.utils.utils.Constants;
-import com.niujiacun.utils.utils.EncryptUtils;
+import com.niujiacun.music.business.interfaces.IHtmlParserService;
+import com.niujiacun.music.business.interfaces.IMusicListQueueService;
+import com.niujiacun.music.business.interfaces.IMusicQueueService;
+import com.niujiacun.music.common.utils.Constants;
+import com.niujiacun.music.common.utils.EncryptUtils;
+import com.niujiacun.music.model.MusicComment;
+import com.niujiacun.music.model.MusicCommentMessage;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -23,34 +28,43 @@ import java.util.List;
 /**
  * Created by Administrator on 2017/11/25.
  */
-public class HtmlParserService {
+@Service("htmlParserService")
+public class HtmlParserServiceImpl implements IHtmlParserService {
 
-    //歌单列表页获取所有歌单URL
-    public static void parseAndSaveMusicListUrl(String html) {
+    @Autowired
+    private IMusicListQueueService musicListQueueService;
+    @Autowired
+    private IMusicQueueService musicQueueServicm;
+
+    @Override
+    public void parseAndSaveMusicListUrl(String html) {
 
         Document doc = Jsoup.parse(html);
         Element content = doc.getElementById("m-pl-container");
         Elements as = content.select("li > div > a.msk");
 
         for (Element a : as) {
-            MusicListQueueService.addMusicList(Constants.DOMAIN + a.attr("href"));
+            musicListQueueService.addMusicList(Constants.DOMAIN + a.attr("href"));
         }
+
     }
 
-    //歌曲列表页获取所有歌曲ID
-    public static void parseMusicListAndGetMusics(String url) throws IOException {
+    @Override
+    public void parseMusicListAndGetMusics(String url) throws IOException {
+
         Document doc = Jsoup.connect(url).get();
         Element content = doc.getElementById("song-list-pre-cache");
         Elements as = content.select("ul.f-hide li a");
 
         for (Element a : as) {
             String suffix = a.attr("href");
-            MusicQueueService.addUncrawledMusic(suffix.substring(suffix.indexOf("id=") + 3));
+            musicQueueServicm.addUncrawledMusic(suffix.substring(suffix.indexOf("id=") + 3));
         }
+
     }
 
-    //通过歌曲ID获取评论API，网易对其进行了加密
-    public static MusicCommentMessage parseCommentMessage(String songId) throws Exception {
+    @Override
+    public MusicCommentMessage parseCommentMessage(String songId) throws Exception {
         String songUrl = Constants.DOMAIN + "/song?id=" + songId;
         URL uri = new URL(songUrl);
         Document msdoc = Jsoup.parse(uri, 3000);
@@ -78,7 +92,6 @@ public class HtmlParserService {
         musicCommentMessage.setSongTitle(msdoc.title());
         musicCommentMessage.setSongUrl(songUrl);
         musicCommentMessage.setCommentCount(commentCount);
-
         List<MusicComment> ls = new ArrayList<MusicComment>();
         if (commentCount != 0 && hotCommentCount != 0) {
 
@@ -103,6 +116,4 @@ public class HtmlParserService {
         musicCommentMessage.setComments(ls);
         return musicCommentMessage;
     }
-
-
 }
