@@ -59,7 +59,6 @@ public class MusicDataServiceImpl implements IMusicDataService{
 
                 //歌曲队列为空就返回上层循环填充歌曲队列
                 while (!musicQueueService.isUncrawledMusicQueueEmpty()) {
-
                     //取出待爬取歌曲ID
                     String songId = musicQueueService.getTopMusicUrl();
                     //判断是否已经爬取过

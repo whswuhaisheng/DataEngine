@@ -10,5 +10,4 @@ public interface MusicDao {
 
     int insert(Music music);
 
-
 }

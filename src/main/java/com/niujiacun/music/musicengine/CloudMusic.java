@@ -15,6 +15,5 @@ public class CloudMusic {
         System.out.println( "-------------网易云音乐我来了--------------" );
         MusicDataServiceImpl musicDataService = (MusicDataServiceImpl)context.getBean("musicDataService");
         musicDataService.addMusicData();
-
     }
 }

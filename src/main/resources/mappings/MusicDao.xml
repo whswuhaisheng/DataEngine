@@ -16,5 +16,4 @@
         values ( #{musicLinkUrl,jdbcType=VARCHAR}, #{musicComment,jdbcType=VARCHAR}, #{insertTime,jdbcType=DATE}
         )
     </insert>
-
 </mapper>

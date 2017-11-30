@@ -9,5 +9,4 @@ public interface IMusicDataService {
      * 添加数据
      */
     public void addMusicData();
-
 }

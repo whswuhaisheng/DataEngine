@@ -8,5 +8,7 @@ import java.io.IOException;
  * 根据URL获取HTML文本
  */
 public interface IHtmlFetcherService {
+
     public  String fetch(String url) throws ClientProtocolException, IOException;
+
 }

@@ -38,7 +38,6 @@ public class HtmlParserServiceImpl implements IHtmlParserService {
 
     @Override
     public void parseAndSaveMusicListUrl(String html) {
-
         Document doc = Jsoup.parse(html);
         Element content = doc.getElementById("m-pl-container");
         Elements as = content.select("li > div > a.msk");

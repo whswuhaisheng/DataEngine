@@ -6,7 +6,6 @@ package com.niujiacun.music.business.interfaces;
  */
 public interface IMusicQueueService {
 
-
     public  void addUncrawledMusic(String e);
 
     public  String getTopMusicUrl();

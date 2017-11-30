@@ -16,6 +16,7 @@ import java.util.List;
 public class TopMusicCalculateServiceImpl implements ITopMusicCalculateService {
 
     static List<MusicCommentMessage> ms = new ArrayList<MusicCommentMessage>();
+
     static List<MusicCommentMessage> msl = new ArrayList<MusicCommentMessage>();
 
     //获取歌曲

@@ -18,4 +18,5 @@ public interface IMusicListQueueService {
 
     public  void printAll();
 
+
 }

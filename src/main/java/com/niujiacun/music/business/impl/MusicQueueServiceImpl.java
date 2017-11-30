@@ -13,6 +13,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class MusicQueueServiceImpl implements IMusicQueueService {
 
     private static Queue<String> uncrawledMusics = new ConcurrentLinkedQueue<String>();
+
     private static Queue<String> crawledMusics = new ConcurrentLinkedQueue<String>();
 
     @Override

@@ -16,6 +16,7 @@ import java.util.Date;
  */
 public class EncryptUtils {
 
+
     public static String aesEncrypt(String value, String key) throws Exception {
         Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
         cipher.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(key.getBytes("UTF-8"), "AES"),

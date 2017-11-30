@@ -7,7 +7,6 @@ public class Constants {
 
     //歌单url
     public static final String SOURCE_URL = "http://music.163.com/discover/playlist/?";
-
     //163主域名
     public static final String DOMAIN = "http://music.163.com";
     public static final String BASE_URL = "http://music.163.com/";

@@ -6,7 +6,6 @@ import java.util.Date;
  * Created by Administrator on 2017/11/25.
  */
 public class Music {
-
     private Integer id;
     private String musicLinkUrl;
     private String musicComment;

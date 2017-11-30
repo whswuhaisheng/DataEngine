@@ -19,7 +19,6 @@ import java.io.IOException;
 @Service("htmlFetcherService")
 public class HtmlFetcherServiceImpl implements IHtmlFetcherService {
 
-
     @Override
     public String fetch(String url) throws ClientProtocolException, IOException {
         CloseableHttpClient httpclient = HttpClients.createDefault();

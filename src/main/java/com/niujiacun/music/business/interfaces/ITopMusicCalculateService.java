@@ -13,4 +13,5 @@ public interface ITopMusicCalculateService {
     public List<MusicCommentMessage> getTopMusic(MusicCommentMessage mcm);
     //获取评论数大于该值的歌曲
     public  List<MusicCommentMessage> getMusicCommentsCountMore(MusicCommentMessage mcm);
+
 }

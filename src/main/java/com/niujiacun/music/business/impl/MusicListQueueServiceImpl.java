@@ -37,6 +37,7 @@ public class MusicListQueueServiceImpl implements IMusicListQueueService {
         return uncrawledMusicList.isEmpty();
     }
 
+
     @Override
     public void printAll() {
         while (!uncrawledMusicList.isEmpty()) {

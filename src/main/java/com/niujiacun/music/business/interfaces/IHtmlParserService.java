@@ -19,6 +19,4 @@ public interface IHtmlParserService {
     //通过歌曲ID获取评论API，网易对其进行了加密
     public MusicCommentMessage parseCommentMessage(String songId) throws Exception;
 
-
-
 }

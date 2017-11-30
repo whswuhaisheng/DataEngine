@@ -7,7 +7,6 @@ public class MusicComment {
 
     //评论类型
     private String type;
-
     private String nickname;
     private String commentDate;
     private String content;

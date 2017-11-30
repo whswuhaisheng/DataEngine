@@ -10,7 +10,6 @@ public class MusicCommentMessage {
 
     //歌名+歌手
     private String songTitle;
-
     //歌曲链接
     private String songUrl;
 
