@@ -24,10 +24,8 @@ public class HtmlFetcherServiceImpl implements IHtmlFetcherService {
     public String fetch(String url) throws ClientProtocolException, IOException {
         CloseableHttpClient httpclient = HttpClients.createDefault();
         String rs = "";
-
         HttpGet httpGet = new HttpGet(url);
         CloseableHttpResponse response = httpclient.execute(httpGet);
-
         HttpEntity entity = response.getEntity();
 
         if (response.getStatusLine().getStatusCode() == 200 && entity != null) {
